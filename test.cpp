@@ -1,26 +1,17 @@
-#include <memory>
-#include <iostream>
-#include <string>
-#include <stack>
-#include <utility>
-#include <sstream>
-#include <algorithm>
 #include <vector>
-#include <map>
-#include <string>
+#include <unordered_map>
+#include <iostream>
 
 using namespace std;
 
 int main() {
-	vector<int> a {1, 2, 3};
-	vector<int> b {10, 20, 30};
+	unordered_map<int, int> count;
+	++count[7];
 
-	a.append_range(b);
+	cout << count[7] << '\n';
 
-	for (int i: a)
-		cout << i << " - ";
-
-	cout << '\n';
+	if (count[7] == 1)
+		cout << "true\n";
 	
 	return 0;
 }
