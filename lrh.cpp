@@ -47,6 +47,32 @@ int largestRectangleArea(vector<int>& heights) {
 	return max_area;
 }
 
+int largestRectangleArea_2(vector<int>& heights) {
+	stack<int> left_bars;
+	left_bars.push(-1);
+	int max_area;
+
+	for (int i = 0; i < heights.size(); ++i) {
+		while (left_bars.top() != -1 && heights[i]  <= heights[left_bars.top()]) {
+			int h = heights[left_bars.top()];
+			left_bars.pop();
+			int area = h * (i - left_bars.top());
+			max_area = max(max_area, area);
+		}
+
+		left_bars.push(i);
+	}
+
+	while (left_bars.top() != -1) {
+		int h = left_bars.top();
+		left_bars.pop();
+		int area = h * (heights.size() - left_bars.top() - 1);
+		max_area = max(max_area, area);
+	}
+
+	return max_area;
+}
+
 int main() {
 	vector<vector<int>> inputs = {
 		{2, 1, 5, 6, 2, 3},
