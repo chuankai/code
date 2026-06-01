@@ -1,17 +1,15 @@
 #include <vector>
 #include <unordered_map>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 int main() {
-	unordered_map<int, int> count;
-	++count[7];
+	string a = "hello";
+	string& b = a;
 
-	cout << count[7] << '\n';
+	cout << b << '\n';
 
-	if (count[7] == 1)
-		cout << "true\n";
-	
 	return 0;
 }

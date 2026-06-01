@@ -26,11 +26,28 @@ vector<int> twoSum(vector<int>& nums, int target) {
 	return ret;
 }
 
+vector<int> twoSum_2(vector<int>& nums, int target) {
+	unordered_map<int, int> num2count;
+
+	for (int i = 0; i < nums.size(); ++i) {
+		int complement = target - nums[i];
+		if (num2count.count(complement))
+			return  {i, num2count[complement]};
+		else
+			num2count[nums[i]] = i;
+	}
+
+	return {};
+}
+
 int main() {
 	vector<int> nums {2, 7, 11, 15};
 	auto res = twoSum(nums, 9);
 
 	cout << res[0] << ", " << res[1] << '\n'; 
+
+	auto res2 = twoSum_2(nums, 9);
+	cout << res2[0] << ", " << res2[1] << '\n'; 
 
 	return 0;
 }
